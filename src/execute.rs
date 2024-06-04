@@ -70,7 +70,7 @@ pub fn try_submit_blob(
         blob_id: contents.blob_id,
         terra_block_number: env.block.height,
         terra_previous_block: previous_block_number,
-        data: contents.message.clone(),
+        data: contents.message.clone(), // Use the Vec<String> directly
     };
 
     // Add the new Blob to BlobData
