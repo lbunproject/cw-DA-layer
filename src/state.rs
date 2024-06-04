@@ -24,7 +24,7 @@ pub struct Blob {
     pub blob_id: u64,
     pub terra_block_number: u64,
     pub terra_previous_block: u64,
-    pub data: String, // store as base64-encoded-data
+    pub data: Vec<String>, // Array of base64-encoded-data Strings
 }
 
 //-------------------------------------------------------------------
