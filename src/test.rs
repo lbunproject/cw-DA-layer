@@ -38,7 +38,7 @@ mod tests {
             contents: ContentsMsg {
                 action: "submit".to_string(),
                 blob_id: 1,
-                message: "data1".to_string(),
+                message: vec!["data1".to_string()], // Changed to Vec<String>
             },
         };
 
@@ -51,7 +51,7 @@ mod tests {
         let blob_data = BLOB_DATA.load(&deps.storage).unwrap();
         assert_eq!(blob_data.blobs.len(), 1);
         assert_eq!(blob_data.blobs[0].blob_id, 1);
-        assert_eq!(blob_data.blobs[0].data, "data1");
+        assert_eq!(blob_data.blobs[0].data, vec!["data1".to_string()]);
     }
 
     #[test]
@@ -66,7 +66,7 @@ mod tests {
             contents: ContentsMsg {
                 action: "submit".to_string(),
                 blob_id: 1,
-                message: "data1".to_string(),
+                message: vec!["data1".to_string()], // Changed to Vec<String>
             },
         };
 
@@ -77,7 +77,7 @@ mod tests {
         let res = query(deps.as_ref(), mock_env(), query_msg).unwrap();
         let blob: BlobInfoResponse = from_binary(&res).unwrap();
         assert_eq!(blob.blob_id, 1);
-        assert_eq!(blob.data, "data1");
+        assert_eq!(blob.data, vec!["data1".to_string()]);
     }
 
     #[test]
@@ -92,7 +92,7 @@ mod tests {
             contents: ContentsMsg {
                 action: "submit".to_string(),
                 blob_id: 1,
-                message: "data1".to_string(),
+                message: vec!["data1".to_string()], // Changed to Vec<String>
             },
         };
 
@@ -106,7 +106,7 @@ mod tests {
         let blob: BlobInfoResponse = from_binary(&res).unwrap();
         assert_eq!(blob.blob_id, 1);
         assert_eq!(blob.terra_block_number, block_number);
-        assert_eq!(blob.data, "data1");
+        assert_eq!(blob.data, vec!["data1".to_string()]);
     }
 
     #[test]
